@@ -3,7 +3,7 @@
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture('Images/car2.jpg')
+cap = cv2.VideoCapture('Images/car.jpg')
 cap.set(3, 640)
 cap.set(4, 480)
 
