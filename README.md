@@ -36,3 +36,23 @@ pip install opencv-python
 ```Python
 pip install numpy
 ```
+
+**Download the YoloV3-320 weights from the link below**.
+
+https://pjreddie.com/media/files/yolov3.weights
+
+**To checkout other models, click on the link below**.
+
+https://pjreddie.com/darknet/yolo/
+
+Download a copy of this repository onto your local machine and extract it into a suitable folder.
+- Create a Virtual Environment in that folder.
+- Install all the required Python libraries mentioned above.
+- **(Important) Move the downloaded YoloV3 Weights into the YoloFiles folder in the Root Directory. The script will not work without this step.**
+- Open a Command Prompt/Terminal in the **Root Directory** of the Project.
+- Type the following command to run the script-
+```Python
+python YoloObjectDetectionDemo.py
+```
+- There are already some images provided in the **Images** folder for testing. To test a different image for object detection, place the desired image in the **Images** folder in the **Root Directory** and **change the image name on the 6th line of the script**.
+- Enjoying playing around with the script!
