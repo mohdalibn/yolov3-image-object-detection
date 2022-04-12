@@ -11,6 +11,8 @@
 <!-- Project Description -->
 # ![project-description (13)](https://user-images.githubusercontent.com/95453430/162766577-a350ea6a-55a9-4fef-9d28-0357c7a4ae49.svg)
 
+This is a **Python Script** which uses YoloV3 to **detect objects in images**. YOLOv3 (You Only Look Once, Version 3) is a real-time object detection algorithm that identifies specific objects in videos, live feeds, or images. YOLO uses features learned by a deep convolutional neural network to detect an object. Versions 1-3 of YOLO were created by Joseph Redmon and Ali Farhadi <a href="https://viso.ai/deep-learning/yolov3-overview/#:~:text=YOLOv3%20(You%20Only%20Look%20Once%2C%20Version%203)%20is%20a,Joseph%20Redmon%20and%20Ali%20Farhadi.">(**Reference - viso.ai**)</a>.
+
 <!-- Project Tech-Stack -->
 # ![technologies-used (13)](https://user-images.githubusercontent.com/95453430/162766585-6546db9f-3fd1-469a-8818-64a575a0c528.svg)
 
