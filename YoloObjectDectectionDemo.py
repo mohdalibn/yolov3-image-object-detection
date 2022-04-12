@@ -113,7 +113,7 @@ while run:
     findObjects(outputs, frame)
 
     new_frame = cv2.resize(frame, (720, 480))
-    cv2.imshow('Image', new_frame)
+    cv2.imshow('YoloV3 Output Image', new_frame)
 
     key = cv2.waitKey()
     if key == 81 or key == 113:
