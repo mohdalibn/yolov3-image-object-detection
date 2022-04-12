@@ -22,3 +22,17 @@
 
 <!-- How To Use Project -->
 # ![how-to-use-project (8)](https://user-images.githubusercontent.com/95453430/162766595-77371398-b473-4f47-844f-fa574e0ba5a1.svg)
+
+**Install the following Python libraries in your Virtual Environment using PIP**.
+
+*Note: The library names are **CASE-SENSITIVE** for PIP installations below. Make sure your type them correctly.*
+
+*Install OpenCV for Python*
+```Python
+pip install opencv-python
+```
+
+*Install Numpy for Python*
+```Python
+pip install numpy
+```
