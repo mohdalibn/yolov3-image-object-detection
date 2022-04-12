@@ -41,7 +41,7 @@ pip install numpy
 
 https://pjreddie.com/media/files/yolov3.weights
 
-**To checkout other models, click on the link below**.
+**To check out other models, click on the link below**.
 
 https://pjreddie.com/darknet/yolo/
 
