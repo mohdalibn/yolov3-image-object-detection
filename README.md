@@ -52,9 +52,13 @@ Download a copy of this repository onto your local machine and extract it into a
 - Install all the required Python libraries mentioned above.
 - **(Important) Move the downloaded YoloV3 Weights into the YoloFiles folder in the Root Directory. The script will not work without this step.**
 - Open a Command Prompt/Terminal in the **Root Directory** of the Project.
-- Type the following command to run the script-
+- To test an image, run the following script-
 ```Python
-python YoloObjectDetectionDemo.py
+python YoloImageObjectDetection.py
 ```
-- There are already some images provided in the **Images** folder for testing. To test a different image for object detection, place the desired image in the **Images** folder in the **Root Directory** and **change the image name on the 6th line of the script**.
-- Enjoying playing around with the script!
+- To test a video, run the following script-
+```Python
+python YoloVideoObjectDetection.py
+```
+- There are already some images and videos provided in the **Assets** folder for testing. To test a different image/video for object detection, place the desired image/video in the **Assets** folder in the **Root Directory** and **change the file name on the 9th line of the YoloImageObjectDetection.py script in the case of an image and YoloVideoObjectDetection.py in the case of a video**.
+- Enjoying playing around with the scripts!
