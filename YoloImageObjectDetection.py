@@ -1,11 +1,12 @@
 
+# THIS SCRIPT IS USED TO TEST YOLOV3 ON IMAGES
+
 # Libraries required to run this project
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture('Images/car.jpg')
-cap.set(3, 640)
-cap.set(4, 480)
+# Loading the image that we want to test
+frame = cv2.imread('Assets/car.jpg')
 
 
 WidthTarget = 320  # the yolo weights are of the images of size 320x320
@@ -76,45 +77,39 @@ def findObjects(outputs, frame):
                     (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 255), 2)
 
 
-# Creating a while loop to get the frames of the webcam
-run = True
-while run:
-    sucess, frame = cap.read()
+# We cannot input the plain image that we recieve from a video or our webcam into our network. It only accepts the blob format
+# converting image to blob
+blob = cv2.dnn.blobFromImage(
+    frame, 1/255, (WidthTarget, WidthTarget), [0, 0, 0], 1, crop=False)
 
-    # We cannot input the plain image that we recieve from a video or our webcam into our network. It only accepts the blob format
+net.setInput(blob)
 
-    # converting image to blob
-    blob = cv2.dnn.blobFromImage(
-        frame, 1/255, (WidthTarget, WidthTarget), [0, 0, 0], 1, crop=False)
+# getting the names of the output layers
+layerNames = net.getLayerNames()
+# print(layerNames)
+net.getUnconnectedOutLayers()  # this line gets the output layers. This returns the tensor/multi-dim-array of indices which we can use to plug in layerNames and get the output layer names. This doesn't follow the standard of starting from index 0, so we should subtract 1 from any index to get the names layerNames
 
-    net.setInput(blob)
+outputNames = [layerNames[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+# print(outputNames)
 
-    # getting the names of the output layers
-    layerNames = net.getLayerNames()
-    # print(layerNames)
-    net.getUnconnectedOutLayers()  # this line gets the output layers. This returns the tensor/multi-dim-array of indices which we can use to plug in layerNames and get the output layer names. This doesn't follow the standard of starting from index 0, so we should subtract 1 from any index to get the names layerNames
+# now, we can send this image as a forward pass to our network and we can find the output of these 3 layers
 
-    outputNames = [layerNames[i[0] - 1] for i in net.getUnconnectedOutLayers()]
-    # print(outputNames)
+outputs = net.forward(outputNames)
+# print(len(outputs)) # prints 3 cuz we are getting 3 different outputs
 
-    # now, we can send this image as a forward pass to our network and we can find the output of these 3 layers
+# print(type(outputs)) # our output is basically a list, so we can use the list operation like list[0] access elements
 
-    outputs = net.forward(outputNames)
-    # print(len(outputs)) # prints 3 cuz we are getting 3 different outputs
+# print(outputs[0].shape) # prints (300, 85). The first output layer produces 300 bounding boxes. The last 80 among the 85 are the probability predictions of different classes. the remaning 5 are the bounding boxes's center x, center y, width, height, and confidence that there is an object present
 
-    # print(type(outputs)) # our output is basically a list, so we can use the list operation like list[0] access elements
+# print(outputs[1].shape) # prints (1200, 85) the second output layer produces 1200 bounding boxes
 
-    # print(outputs[0].shape) # prints (300, 85). The first output layer produces 300 bounding boxes. The last 80 among the 85 are the probability predictions of different classes. the remaning 5 are the bounding boxes's center x, center y, width, height, and confidence that there is an object present
+# print(outputs[2].shape) # prints (4800, 85) the third output layer produces 4800 bounding boxes
 
-    # print(outputs[1].shape) # prints (1200, 85) the second output layer produces 1200 bounding boxes
+findObjects(outputs, frame)
 
-    # print(outputs[2].shape) # prints (4800, 85) the third output layer produces 4800 bounding boxes
+new_frame = cv2.resize(frame, (720, 480))
+cv2.imshow('YoloV3 Output Image', new_frame)
 
-    findObjects(outputs, frame)
-
-    new_frame = cv2.resize(frame, (720, 480))
-    cv2.imshow('YoloV3 Output Image', new_frame)
-
-    key = cv2.waitKey()
-    if key == 81 or key == 113:
-        break
+key = cv2.waitKey()
+if key == 81 or key == 113:
+    cv2.destroyAllWindows()
