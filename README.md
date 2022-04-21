@@ -61,4 +61,4 @@ python YoloImageObjectDetection.py
 python YoloVideoObjectDetection.py
 ```
 - There are already some images and videos provided in the **Assets** folder for testing. To test a different image/video for object detection, place the desired image/video in the **Assets** folder in the **Root Directory** and **change the file name on the 9th line of the YoloImageObjectDetection.py script in the case of an image and YoloVideoObjectDetection.py in the case of a video**.
-- Enjoying playing around with the scripts!
+- Enjoy playing around with the scripts!
